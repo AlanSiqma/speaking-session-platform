@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeakAI - Transforme sua Comunicação com IA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 800px;
+        }
+
+        .cta-primary {
+            background: #ff6b6b;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.3);
+        }
+
+        .cta-primary:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255,107,107,0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .section h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .benefit {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .benefit h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .benefit p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .features-section {
+            background: #f8f9fa;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .pricing {
+            background: #f8f9fa;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #667eea;
+            transform: scale(1.05);
+        }
+
+        .popular {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 3rem;
+            color: #667eea;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-card li:last-child {
+            border-bottom: none;
+        }
+
+        .testimonials {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ff6b6b;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .faq {
+            background: #f8f9fa;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background: #667eea;
+            color: white;
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #5a6fd8;
+        }
+
+        .faq-answer {
+            padding: 1.5rem;
+            color: #666;
+            display: none;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .benefits,
+            .features,
+            .pricing-cards,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Domine a Comunicação</h1>
+        <p class="subtitle">Transforme suas habilidades de fala com a mais avançada plataforma de treinamento assistida por IA</p>
+        <div>
+            <a href="#demo" class="cta-primary">Começar Agora - Grátis!</a>
+            <a href="#features" class="cta-secondary">Ver Como Funciona</a>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Por que Escolher o SpeakAI?</h2>
+            <div class="benefits">
+                <div class="benefit">
+                    <span class="benefit-icon">🚀</span>
+                    <h4>Resultados 3x Mais Rápidos</h4>
+                    <p>Nossa IA analisa sua fala em tempo real e oferece feedback preciso para acelerar seu desenvolvimento</p>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">📊</span>
+                    <h4>Progresso Mensurável</h4>
+                    <p>Acompanhe sua evolução com métricas detalhadas e relatórios de progresso personalizados</p>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">🎯</span>
+                    <h4>100% Personalizado</h4>
+                    <p>Treinamentos adaptados ao seu nível, objetivos e área de interesse específica</p>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">⚡</span>
+                    <h4>Disponível 24/7</h4>
+                    <p>Pratique quando quiser, onde quiser. Sua academia de comunicação particular</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <h3>10,000+</h3>
+                    <p>Usuários Ativos</p>
+                </div>
+                <div class="stat">
+                    <h3>95%</h3>
+                    <p>Taxa de Melhoria</p>
+                </div>
+                <div class="stat">
+                    <h3>50M+</h3>
+                    <p>Sessões Realizadas</p>
+                </div>
+                <div class="stat">
+                    <h3>4.9★</h3>
+                    <p>Avaliação Média</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features-section" id="features">
+        <div class="container">
+            <h2>Funcionalidades que Fazem a Diferença</h2>
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">🎤</span>
+                    <h4>Gravação Inteligente</h4>
+                    <p>Sistema avançado de captura de áudio com cancelamento de ruído e análise de qualidade vocal</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🧠</span>
+                    <h4>IA Especializada</h4>
+                    <p>Algoritmos treinados especificamente para comunicação humana e técnicas de oratória</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📝</span>
+                    <h4>Transcrição Perfeita</h4>
+                    <p>Conversão de fala para texto com 99.5% de precisão, incluindo pontuação e contexto</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📈</span>
+                    <h4>Analytics Avançado</h4>
+                    <p>Dashboard completo com métricas de fluência, velocidade, pausas e confiança</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🎯</span>
+                    <h4>Exercícios Direcionados</h4>
+                    <p>Biblioteca com centenas de exercícios para diferentes cenários e objetivos</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🏆</span>
+                    <h4>Certificações</h4>
+                    <p>Conquiste certificados reconhecidos conforme evolui suas habilidades</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section pricing" id="pricing">
+        <div class="container">
+            <h2>Planos para Cada Necessidade</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">Grátis</div>
+                    <ul>
+                        <li>✅ 10 sessões/mês</li>
+                        <li>✅ Feedback básico</li>
+                        <li>✅ Transcrição simples</li>
+                        <li>✅ Relatório mensal</li>
+                        <li>✅ Suporte por email</li>
+                    </ul>
+                    <a href="#demo" class="cta-primary">Começar Grátis</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="popular">Mais Popular</div>
+                    <h3>Professional</h3>
+                    <div class="price">R$ 49<span>/mês</span></div>
+                    <ul>
+                        <li>✅ Sessões ilimitadas</li>
+                        <li>✅ IA avançada</li>
+                        <li>✅ Analytics completo</li>
+                        <li>✅ Exercícios personalizados</li>
+                        <li>✅ Suporte prioritário</li>
+                        <li>✅ Certificações</li>
+                    </ul>
+                    <a href="#demo" class="cta-primary">Teste 7 Dias Grátis</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Personalizado</div>
+                    <ul>
+                        <li>✅ Tudo do Professional</li>
+                        <li>✅ API personalizada</li>
+                        <li>✅ Integrações</li>
+                        <li>✅ Treinamento de equipes</li>
+                        <li>✅ Dashboard gerencial</li>
+                        <li>✅ Suporte dedicado</li>
+                    </ul>
+                    <a href="#contact" class="cta-primary">Fale Conosco</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2>O que Nossos Usuários Dizem</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-avatar">M</div>
+                    <p>"Em 3 meses melhorei drasticamente minha comunicação. As apresentações no trabalho ficaram muito mais fluidas e confiantes."</p>
+                    <h4>Maria Silva</h4>
+                    <small>Gerente de Projetos</small>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-avatar">J</div>
+                    <p>"Como empreendedor, preciso falar em público constantemente. O SpeakAI me deu a confiança que eu precisava."</p>
+                    <h4>João Santos</h4>
+                    <small>CEO Startup</small>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-avatar">A</div>
+                    <p>"A plataforma é incrível! O feedback da IA é mais preciso que muitos coaches humanos que já tive."</p>
+                    <h4>Ana Costa</h4>
+                    <small>Professora</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq">
+        <div class="container">
+            <h2>Perguntas Frequentes</h2>
+            <div class="faq-item">
+                <div class="faq-question">Como funciona a análise por IA?</div>
+                <div class="faq-answer">Nossa IA analisa múltiplos aspectos da sua fala: fluência, velocidade, pausas, entonação, clareza e confiança. Baseado em milhões de amostras de fala, oferecemos feedback preciso e personalizado.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Posso usar em qualquer idioma?</div>
+                <div class="faq-answer">Atualmente suportamos português, inglês, espanhol e francês. Estamos constantemente adicionando novos idiomas baseado na demanda dos usuários.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Preciso de equipamentos especiais?</div>
+                <div class="faq-answer">Não! Funciona perfeitamente com o microfone do seu computador ou celular. Para melhor qualidade, recomendamos fones de ouvido com microfone.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Como cancelo minha assinatura?</div>
+                <div class="faq-answer">Pode cancelar a qualquer momento através do seu painel de usuário. Sem taxas de cancelamento e continua funcionando até o fim do período já pago.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2>Comece Sua Transformação Hoje</h2>
+            <div class="contact-form" id="demo">
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input type="text" placeholder="Seu nome completo" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="tel" placeholder="(11) 99999-9999">
+                </div>
+                <div class="form-group">
+                    <label>Principal Objetivo</label>
+                    <textarea placeholder="Como podemos ajudar você a melhorar sua comunicação?"></textarea>
+                </div>
+                <div style="text-align: center;">
+                    <button class="cta-primary">Começar Minha Jornada 🚀</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 SpeakAI - Plataforma de Comunicação Assistida por IA</p>
+        <p>Transformando vidas através da comunicação eficaz</p>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
