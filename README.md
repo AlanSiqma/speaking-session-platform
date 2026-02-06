@@ -40,7 +40,7 @@ Key architectural characteristics:
 
 Detailed decisions are documented in:
 
-* [`ADR‑0001`](docs/architecture/adr/ADR-0001.md) — Architectural foundation
+* [`ADR‑0001`](docs/architecture/adr/adr-001/ADR-0001.md) — Architectural foundation
 * `ADR‑0001A` — Asynchronous STT processing
 * `ADR‑0001B` — BFF domain orchestration strategy
 * `ADR‑0001C` — LLM integration boundary via ACL
