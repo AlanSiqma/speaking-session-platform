@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeakAI - Guia de Instalação</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="icon.ico">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .step {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid #667eea;
+        }
+        .step h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        .code {
+            background: #2d3748;
+            color: #68d391;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 0.5rem;
+            font-weight: bold;
+        }
+        .button:hover {
+            background: #5a6fd8;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #c3e6cb;
+            margin: 1rem 0;
+        }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ffeaa7;
+            margin: 1rem 0;
+        }
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 SpeakAI Landing Page</h1>
+        <p>Guia de Instalação e Configuração</p>
+    </div>
+
+    <div class="step">
+        <h3>📋 Passo 1: Verificar Arquivo</h3>
+        <p>Certifique-se de que você tem todos os arquivos necessários:</p>
+        <ul>
+            <li>✅ <strong>index.html</strong> - Landing page principal</li>
+            <li>✅ <strong>register.php</strong> - Processamento de cadastros</li>
+            <li>✅ <strong>admin.php</strong> - Painel administrativo</li>
+            <li>✅ <strong>.htaccess</strong> - Configurações do servidor</li>
+            <li>✅ <strong>demo.php</strong> - Dados de demonstração</li>
+            <li>✅ <strong>setup.html</strong> - Este guia</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>🖥️ Passo 2: Configurar Servidor Local</h3>
+        <p>Para testar localmente, escolha uma opção:</p>
+        
+        <h4>Opção A: XAMPP/WAMP (Recomendado)</h4>
+        <ol>
+            <li>Instale o <a href="https://www.apachefriends.org/" target="_blank">XAMPP</a></li>
+            <li>Copie esta pasta para <code>C:\xampp\htdocs\speakai\</code></li>
+            <li>Inicie o Apache no painel do XAMPP</li>
+            <li>Acesse: <code>http://localhost/speakai/</code></li>
+        </ol>
+
+        <h4>Opção B: PHP Server Nativo</h4>
+        <div class="code">
+            # Navegue até a pasta do projeto
+            cd src/lp
+            
+            # Inicie o servidor PHP
+            php -S localhost:8000
+        </div>
+        <p>Depois acesse: <code>http://localhost:8000</code></p>
+    </div>
+
+    <div class="step">
+        <h3>🎯 Passo 3: Criar Dados de Demonstração</h3>
+        <p>Para popular com dados de teste, execute:</p>
+        <a href="demo.php" class="button">🎮 Executar Demo</a>
+        <p><small>Isso criará 5 cadastros de exemplo para você testar o painel admin</small></p>
+    </div>
+
+    <div class="step">
+        <h3>🔑 Passo 4: Acessar o Sistema</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+            <div>
+                <a href="index.html" class="button">🌐 Landing Page</a>
+                <p><small>Página principal com formulário</small></p>
+            </div>
+            <div>
+                <a href="admin.php" class="button">👨‍💼 Painel Admin</a>
+                <p><small>Senha: <strong>speakai2026</strong></small></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="warning">
+        <h4>⚠️ Importante para Produção</h4>
+        <ul>
+            <li><strong>Altere a senha</strong> em <code>admin.php</code></li>
+            <li><strong>Backup regular</strong> do arquivo <code>cadastros.json</code></li>
+            <li><strong>Monitore o espaço</strong> em disco</li>
+            <li><strong>Configure HTTPS</strong> para dados seguros</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>🧪 Passo 5: Testar Funcionalidades</h3>
+        <ol>
+            <li><strong>Formulário</strong>: Preencha e envie um cadastro</li>
+            <li><strong>Validação</strong>: Teste com email duplicado</li>
+            <li><strong>Admin</strong>: Visualize os cadastros</li>
+            <li><strong>Filtro</strong>: Pesquise por nome/email</li>
+            <li><strong>Export</strong>: Baixe os dados em CSV</li>
+        </ol>
+    </div>
+
+    <div class="success">
+        <h4>✅ Checklist Final</h4>
+        <p>Marque conforme testa:</p>
+        <ul>
+            <li>□ Landing page carrega corretamente</li>
+            <li>□ Formulário envia dados sem erro</li>
+            <li>□ Login no admin funciona</li>
+            <li>□ Dashboard mostra cadastros</li>
+            <li>□ Filtro de busca funciona</li>
+            <li>□ Export CSV baixa arquivo</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>📱 Deploy em Produção</h3>
+        <ol>
+            <li><strong>Upload</strong>: Envie todos os arquivos para servidor com PHP</li>
+            <li><strong>Permissões</strong>: Certifique-se de que PHP pode criar arquivos</li>
+            <li><strong>Teste</strong>: Faça um cadastro de teste</li>
+            <li><strong>SSL</strong>: Configure HTTPS para segurança</li>
+            <li><strong>Backup</strong>: Configure backup automático</li>
+        </ol>
+    </div>
+
+    <div class="step">
+        <h3>📊 Dados Capturados</h3>
+        <p>Para cada cadastro, o sistema salva:</p>
+        <ul>
+            <li><strong>Nome completo</strong></li>
+            <li><strong>Email</strong> (único, não permite duplicatas)</li>
+            <li><strong>Telefone</strong> (opcional, com máscara)</li>
+            <li><strong>Objetivo</strong> (opcional)</li>
+            <li><strong>Data/hora</strong> do cadastro</li>
+            <li><strong>IP</strong> do visitante</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>🎨 Personalização</h3>
+        <p>Para customizar o sistema:</p>
+        <ul>
+            <li><strong>Cores/Design</strong>: Edite o CSS nos arquivos HTML</li>
+            <li><strong>Formulário</strong>: Adicione campos em index.html e register.php</li>
+            <li><strong>Validações</strong>: Modifique register.php</li>
+            <li><strong>Email</strong>: Integre com sistema de email marketing</li>
+        </ul>
+    </div>
+
+    <footer style="text-align: center; padding: 2rem; color: #666; border-top: 1px solid #eee; margin-top: 2rem;">
+        <p><strong>SpeakAI Landing Page System</strong> v1.0</p>
+        <p>Sistema completo de captura de leads com painel administrativo</p>
+    </footer>
+</body>
+</html>

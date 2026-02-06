@@ -1,0 +1,22 @@
+# Configurações para desenvolvimento local
+DirectoryIndex index.html index.php
+
+# Permitir acesso aos arquivos PHP
+<Files "*.php">
+    Order allow,deny
+    Allow from all
+</Files>
+
+# Proteger arquivo de cadastros
+<Files "cadastros.json">
+    Order deny,allow
+    Deny from all
+</Files>
+
+# Headers de segurança
+Header always set X-Frame-Options DENY
+Header always set X-Content-Type-Options nosniff
+Header always set X-XSS-Protection "1; mode=block"
+
+# Configurar charset UTF-8
+AddDefaultCharset UTF-8
